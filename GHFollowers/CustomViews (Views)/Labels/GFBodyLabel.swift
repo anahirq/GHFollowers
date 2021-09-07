@@ -36,6 +36,7 @@ class GFBodyLabel: UILabel {
         //If the title is to long how it's going to manage it
         lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
+        textAlignment = textAlignment
     }
 
 }

@@ -23,8 +23,8 @@ class GFTextField: UITextField {
         translatesAutoresizingMaskIntoConstraints = false
         
         layer.cornerRadius = 10
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.systemGray4.cgColor
+        layer.borderWidth  = 2
+        layer.borderColor  = UIColor.systemGray4.cgColor
         
         //. label change between black and white when using (or not) darkmode
         textColor = .label
@@ -38,6 +38,9 @@ class GFTextField: UITextField {
         //autocorrect words
         autocorrectionType = .no
         returnKeyType = .go
+        
+        //Add an "x" at the end of the textfield so you can erase all the text
+        clearButtonMode = .whileEditing
         
         placeholder = "Enter a username"
     }

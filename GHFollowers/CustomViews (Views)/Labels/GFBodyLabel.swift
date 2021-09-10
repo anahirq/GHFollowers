@@ -20,11 +20,9 @@ class GFBodyLabel: UILabel {
     
     
     //Custom initializer
-    init(textAligment: NSTextAlignment) {
-        //We dont have a frame so you set the value to 0
-        super.init(frame: .zero)
+    convenience init(textAligment: NSTextAlignment) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
-        configure()
     }
     
     

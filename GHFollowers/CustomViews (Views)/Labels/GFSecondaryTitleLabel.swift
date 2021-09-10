@@ -19,11 +19,9 @@ class GFSecondaryTitleLabel: UILabel {
     
     
     //Custom initializer
-    init(fontSize: CGFloat) {
-        //We dont have a frame so you set the value to 0
-        super.init(frame: .zero)
+    convenience init(fontSize: CGFloat) {
+        self.init(frame: .zero)
         font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
-        configure()
     }
     
     

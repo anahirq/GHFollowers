@@ -20,13 +20,10 @@ class GFTitleLabel: UILabel {
     
     
     //Custom initializer
-    init(textAligment: NSTextAlignment, fontSize: CGFloat) {
-        //We dont have a frame so you set the value to 0
-        super.init(frame: .zero)
-    
+    convenience init(textAligment: NSTextAlignment, fontSize: CGFloat) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        configure()
     }
     
     

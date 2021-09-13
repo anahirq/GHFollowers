@@ -16,10 +16,10 @@ class GFButton: UIButton {
         configure()
     }
     
-    //This handles initialization via storyboards
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     //custom init
     convenience init(backgroundColor: UIColor, title: String) {

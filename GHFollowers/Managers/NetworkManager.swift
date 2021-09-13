@@ -8,11 +8,10 @@
 import UIKit
 
 class NetworkManager {
-    static let shared  = NetworkManager()
-    private let baseURL = "https://api.github.com/users/"
     
-    //create cache
-    let cache = NSCache<NSString, UIImage>()
+    static let shared   = NetworkManager()
+    private let baseURL = "https://api.github.com/users/"
+    let cache           = NSCache<NSString, UIImage>()
     
     private init() {}
     
@@ -32,13 +31,11 @@ class NetworkManager {
                 completed(.failure(.unableToComplete))
             }
             
-            //Handle the response
-            //The 200 means that everything is ok
+            //Handle the response, the 200 means that everything is ok
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.invalidResponse))
                 return
             }
-            
             
             guard let data = data else {
                 completed(.failure(.invalidData))
@@ -48,15 +45,12 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                //decoder.dateDecodingStrategy = .iso8601
                 let followers = try decoder.decode([Follower].self, from: data)
                 completed(.success(followers))
             } catch {
                 completed(.failure(.invalidData))  
             }
         }
-        
-        
         
         //start the network call
         task.resume()
@@ -72,14 +66,11 @@ class NetworkManager {
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            //If the error exist
+
             if let _ = error {
                 completed(.failure(.unableToComplete))
             }
-            
-            //Handle the response
-            //The 200 means that everything is ok
+
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.invalidResponse))
                 return
@@ -101,8 +92,6 @@ class NetworkManager {
                 completed(.failure(.invalidData))
             }
         }
-        
-        
         
         //start the network call
         task.resume()
@@ -132,18 +121,15 @@ class NetworkManager {
                                 completed(nil)
                                 return
                             }
-            
-            
+
             //Save image to the cache
             self.cache.setObject(image, forKey: cacheKey)
             
             //set avatar image to image in the UIView
             completed(image)
-            
         }
         
         task.resume()
-        
     }
     
     

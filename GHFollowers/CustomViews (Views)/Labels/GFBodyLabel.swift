@@ -27,14 +27,16 @@ class GFBodyLabel: UILabel {
     
     
     private func configure() {
-        textColor = .secondaryLabel
-        font = UIFont.preferredFont(forTextStyle: .body)
-        adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.75
+        textColor                         = .secondaryLabel
+        font                              = UIFont.preferredFont(forTextStyle: .body)
+        adjustsFontForContentSizeCategory = true
+        adjustsFontSizeToFitWidth         = true
+        minimumScaleFactor                = 0.75
         //If the title is to long how it's going to manage it
-        lineBreakMode = .byWordWrapping
+        lineBreakMode                     = .byWordWrapping
+        textAlignment                     = textAlignment
         translatesAutoresizingMaskIntoConstraints = false
-        textAlignment = textAlignment
+        
     }
 
 }

@@ -8,19 +8,18 @@
 import UIKit
 
 class GFAlertVC: UIViewController {
-    
     //initialize objects
     let containerView = GFAlertContainerView()
     let titleLabel    = GFTitleLabel(textAligment: .center, fontSize: 20)
     let messageLabel  = GFBodyLabel(textAligment: .center)
     let actionButton  = GFButton(backgroundColor: .systemPink, title: "Ok")
     
-    
     var alertTitle: String?
     var message: String?
     var buttonTitle: String?
     
     let padding: CGFloat = 20
+    
     
     //Custom init
     init(title: String, message: String, buttonTitle: String){
@@ -40,6 +39,9 @@ class GFAlertVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        
+        view.addSubviews(containerView, titleLabel, actionButton, messageLabel)
+        
         configureContainerView()
         configureTitleLabel()
         configureActionButton()
@@ -50,7 +52,6 @@ class GFAlertVC: UIViewController {
     //MARK: - UI Configuration
     
     func configureContainerView(){
-        view.addSubview(containerView)
         
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -62,8 +63,6 @@ class GFAlertVC: UIViewController {
     
     
     func configureTitleLabel() {
-        //adding to the containerView not to the general view
-        containerView.addSubview(titleLabel)
         titleLabel.text = alertTitle ?? "Something went wrong"
         titleLabel.textAlignment = .center
         
@@ -77,7 +76,6 @@ class GFAlertVC: UIViewController {
     
     
     func configureActionButton() {
-        containerView.addSubview(actionButton)
         actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
         actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         
@@ -92,7 +90,6 @@ class GFAlertVC: UIViewController {
     
     
     func configureMessageLabel() {
-        containerView.addSubview(messageLabel)
         messageLabel.text          = message ?? "Unable to complete request"
         messageLabel.numberOfLines = 4
         

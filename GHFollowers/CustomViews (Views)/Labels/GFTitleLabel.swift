@@ -34,7 +34,6 @@ class GFTitleLabel: UILabel {
         minimumScaleFactor = 0.90
         //If the title is to long how it's going to manage it, it will add ... at the end
         lineBreakMode = .byTruncatingTail
-        
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
